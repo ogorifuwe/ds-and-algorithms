@@ -5,7 +5,7 @@
  * has all unique characters. Please see README.md for more details.
  * ------------------------------------
  * | To Compile:  javac IsUnique.java |
- * | To Execute:  java IsUnique       |
+ * | To Run:  java IsUnique       |
  * ------------------------------------
  */
 
@@ -109,8 +109,14 @@ public class IsUnique {
         if (str.length() > 128) return false;
 
         char[] ch = new char[128];
+        //String str1 = "";
         for (int i = 0; i < str.length(); ++i) {
-            ch[i] = str.charAt(i);
+            if (str.charAt(i))
+            str1 += str.charAt(i); 
+        }
+
+        for (int i = 0; i < str.length(); ++i) {
+            
             if (ch[i] == str.charAt(i)) {
                 return false;
             }
@@ -132,7 +138,7 @@ public class IsUnique {
                 + "ASCII characters\n");
         System.out.print("has all unique characters.\n");
         System.out.print("Enter a string to find out if they have all unique"
-                + " character\n");
+                + " characters\n");
         System.out.print("To quit this program, please enter \"exit\" \n");
     }
 

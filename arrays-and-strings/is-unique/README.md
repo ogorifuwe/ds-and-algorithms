@@ -1,14 +1,12 @@
 Is Unique: Implement an algorithm to determine if a string has all
 unique characters. What is you cannot use additional data structures?
 
-Hints: #44, 117, #132
+    *   Try a hash table.
 
-    #44.    Try a hash table.
+    *   Could a bit vector be helpful?
 
-    #117.   Could a bit vector be helpful?
-
-    #132.   Can you solve it in O(N log N) time?
-            What might a solution like that look like?
+    *   Can you solve it in O(N log N) time?
+        What might a solution like that look like?
 
 
 SOLUTION
