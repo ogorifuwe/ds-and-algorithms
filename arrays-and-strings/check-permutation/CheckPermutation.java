@@ -1,64 +1,76 @@
-/**
- * Question: Given two strings, write a method to decide if one
- *           is a permutation of the other.
+/**.
+ * File: CheckPermutation.java
+ * ---------------------------
+ * Given two strings, this program decides if
+ * one is a permutation of the other.
+ * ----------------------------------------------
+ * | Compilation: javac CheckPermutation.java   |
+ * | Exceution:   java CheckPermutation         |
+ * ----------------------------------------------
  */
-
-
 public class CheckPermutation {
-    
-    /** entry point */
+
+    /** point of entry */
     public static void main(String[] args) {
-        // method calls
-        System.out.println(permutation1("man","amn"));
-        System.out.println(permutation2("man","amn"));
+            
+        /* testing solutions*/
+        System.out.println("Solution 1: " + permutation1("man", "amn"));
+        System.out.println("Solution 2: " + permutation2("nam", "anm"));
     }
 
-
-    /**
+    /**.
      * Used to sort a string to perfect order.
-     * @param s A string to be sorted
+     * @param str String to be sorted.
      */
-    public static String sort(String s) {
-        char[] content = s.toCharArray();
+    public static String sort(String str) {
+        char[] content = str.toCharArray();
         java.util.Arrays.sort(content);
         return new String(content);
     }
 
-
-    /**
-     * Used to decide if one string is a permutaion of the other
-     * @param s the first string.
-     * @param t the second string.
+    /**. Solution 1
+     * Used to decide if one string is a permutaion of the other.
+     * @pre Length of both string paramters must be equal.
+     * @post Sorts two string paramters  and check if their
+     * characters are the same.
+     * @param str1 The first string.
+     * @param str2 The second string.
+     * @return Returns true iff str2 is a permutation of str1;
+     * returns false otherwise.
      */
-    public static boolean permutation1(String s, String t) {
-        // permutations must be same length
-        if (s.length() != t.length()) return false;
+    public static boolean permutation1(String str1, String str2) {
+        /* permutations must be same length */
+        if (str1.length() != str2.length()) return false;
 
-        return sort(s).equals(sort(t));
+        return sort(str1).equals(sort(str2));
     }
 
-
-    /**
-     * Used to decide if one string is a permutation of the other
-     * @param s The first string.
-     * @param t The second string.
+    /**. Solution 2
+     * Used to decide if one string is a permutation of the other.
+     * @pre Length of both string paramters must be equal.
+     * @param str1 The first string.
+     * @param str2 The second string.
+     * @return Returns true iff str2 is a permutation of str1;
+     * returns false otherwise.
      */
-    public static boolean permutation2(String s, String t) {
-        // permutations must be same length
-        if (s.length() != t.length()) return false;
+    public static boolean permutation2(String str1, String str2) {
+        /* permutations must be same length */
+        if (str1.length() != str2.length()) return false;
 
-        int[] letters = new int[128]; // Assumption: ASCII
-        for (int i = 0; i < s.length(); ++i) {
-            letters[s.charAt(i)]++;
+        int[] letters = new int[128]; // Assumption: ASCII encoded characters
+        for (int i = 0; i < str1.length(); ++i) {
+            letters[str1.charAt(i)]++;
         }
 
-        for (int j = 0; j < t.length(); ++j) {
-            letters[t.charAt(j)]--;
-            if (letters[t.charAt(j)] < 0) {
+        for (int j = 0; j < str2.length(); ++j) {
+            letters[str2.charAt(j)]--;
+            if (letters[str2.charAt(j)] < 0) {
                 return false;
             }
         }
-        return true;    /* letters has no neg values, and therefore
-        no pos values either */
-    }   
+        return true;    /* i.e letters either has -ve or +ve values */
+    }
+    /**.
+     * Time Complexity: O(N) 
+     */   
 }
