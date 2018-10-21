@@ -26,13 +26,13 @@ public class IsUnique {
 
             /* testing implementations */
             // solution 1
-            System.out.println("Test for Solution 1: " + isUniqueCharacters1(str) +"\n");
+            System.out.print("Test for Solution 1: " + isUniqueCharacters1(str) +"\n");
             // solution 2
-            //System.out.println(isUniqueChars1("ogor"));
+            System.out.print("Test for Solution 2: " + isUniqueCharacters2(str) + "\n");
             // solution 3
-            System.out.println("Test for Solution 3: " + isUniqueCharacters3(str) +"\n");
-            // solution 3
-            //System.out.println(isUniqueChars3("ogor"));
+            System.out.print("Test for Solution 3: " + isUniqueCharacters3(str) +"\n");
+            // solution 4
+            System.out.print("Test for Solution 4: " + isUniqueCharacters4(str) + "\n");
         }
     }
 
@@ -72,6 +72,8 @@ public class IsUnique {
 
     /**. Solution 2
      * Using bit vector, we can reduce space usage by a factor of 8
+     * NB: This algorithm assumes that the string entered only uses
+     * lowercase letters a through z.
      */
     public static boolean isUniqueCharacters2(String str) {
         int checker = 0;
@@ -86,8 +88,16 @@ public class IsUnique {
     }
 
     /**. Soluton 3
-     * using a hash set
-     * @pre
+     * Using a hash set, we iterate through the string and check if we
+     * have previously seen the character at that index. If we have we 
+     * return false, other we add it to the hash set and move to the
+     * next character, repeating the previous step until we reach the
+     * end of the string.
+     * @pre String <=  128 characters.
+     * @post Takes a String and checks if it has all unique characters.
+     * @param str String to be checked if all characters are unique or not.
+     * @return Returns true iff str has all unique characters, returns false 
+     * otherwise
      */
     public static boolean isUniqueCharacters3(String str) {
         if (str.length() > 128) return false;
@@ -100,29 +110,31 @@ public class IsUnique {
         }
         return true;
     }
-
-
     /**.
-     * another naive algorithm using char array
+     * Time complexity: O(s) where s is the length of the string.
      */
-    public static boolean isUniqueChars3(String str) {
+
+
+    /**. Solution 4
+     * Comparing every character of the string to every other character
+     * of the string.
+     */
+    public static boolean isUniqueCharacters4(String str) {
         if (str.length() > 128) return false;
 
-        char[] ch = new char[128];
-        //String str1 = "";
         for (int i = 0; i < str.length(); ++i) {
-            if (str.charAt(i))
-            str1 += str.charAt(i); 
-        }
-
-        for (int i = 0; i < str.length(); ++i) {
-            
-            if (ch[i] == str.charAt(i)) {
-                return false;
+            char ch1 = str.charAt(i);
+            for (int j = i+1; j < str.length(); ++j) {
+                char ch2 = str.charAt(j);
+                if (ch1 == ch2) return false;
             }
         }
         return true;
     }
+    /**.
+     * Time complexity: O(n^2)
+     * Space complexity: O(1)
+     */
 
     /**. Used to prompt user */
     public static String promptUser() {
