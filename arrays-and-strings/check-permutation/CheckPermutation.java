@@ -29,7 +29,9 @@ public class CheckPermutation {
     }
 
     /**. Solution 1
-     * Used to decide if one string is a permutaion of the other.
+     * Used to decide if one string is a permutaion of the other by;
+     * first sorting the strings to perfect order. Then comparing
+     * their contents.
      * @pre Length of both string parameters must be equal.
      * @post Sorts two string parameters and check if their
      * characters are the same.
@@ -46,8 +48,13 @@ public class CheckPermutation {
     }
 
     /**. Solution 2
-     * Used to decide if one string is a permutation of the other.
+     * Used to decide if one string is a permutation of the other by;
+     * initializing an int array, reading in the frequency of each character
+     * of the string in the first iteration and decrementing in the second
+     * iteration.
      * @pre Length of both string parameters must be equal.
+     * @post Initializes an int array, keeps count of character frequency,
+     * decrements frequency in the second iteration.
      * @param str1 The first string.
      * @param str2 The second string.
      * @return Returns true iff str2 is a permutation of str1;
