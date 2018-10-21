@@ -30,8 +30,8 @@ public class CheckPermutation {
 
     /**. Solution 1
      * Used to decide if one string is a permutaion of the other.
-     * @pre Length of both string paramters must be equal.
-     * @post Sorts two string paramters  and check if their
+     * @pre Length of both string parameters must be equal.
+     * @post Sorts two string parameters and check if their
      * characters are the same.
      * @param str1 The first string.
      * @param str2 The second string.
@@ -47,7 +47,7 @@ public class CheckPermutation {
 
     /**. Solution 2
      * Used to decide if one string is a permutation of the other.
-     * @pre Length of both string paramters must be equal.
+     * @pre Length of both string parameters must be equal.
      * @param str1 The first string.
      * @param str2 The second string.
      * @return Returns true iff str2 is a permutation of str1;
