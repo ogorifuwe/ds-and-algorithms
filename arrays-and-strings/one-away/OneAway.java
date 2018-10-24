@@ -1,5 +1,15 @@
-/**
- * Please see OneAwayReadMe.md for details of this class.
+/**.
+ * File: OneAway.java
+ * ------------------
+ * This program is used to determine if a string is one edit away from
+ * another string.
+ * Example
+ * apples, aples -> true
+ * apple, apples -> true
+ * apple, bpple -> true
+ * apple, apklex -> false
+ * e
+ * Please see README.md for details of this class.
  * @author Ogor Ifuwe, August 27, 2018.
  */
 public class OneAway {
@@ -12,13 +22,12 @@ public class OneAway {
         System.out.println(oneEditAway1("pale", "bale"));
         System.out.println(oneEditAway1("pale", "bae"));
     }
-    /**
-     * Solution 1.
-     * Please see OneAwayReadMe.md for details.
-     * @param first 
-     * @param second
-     * @return Returns true iff second is derivable from
-     *         oneEditReplace() or oneEditInsertRemove() 
+
+    /**. Solution 1.
+     * @param str1 First String
+     * @param str2 Second String
+     * @return Returns true iff str1 is one edit away from
+     * str2. 
      */
     public static boolean oneEditAway1(String first, String second) {
         if (first.length() == second.length()) {
@@ -31,19 +40,19 @@ public class OneAway {
         return false;
     }
 
-    /**
-     * Used to check if s2 is derived from s1 by replacing a
-     * character in s1.
-     * @param s1 The string by which s2 can be derived by replacing
-     *           a character.
-     * @param s2 The string derived from s1, by replacing a character.
-     * @return Returns true iff s2 is derivable from s1 by replacing
-     *         one character.
+    /**.
+     * Used to check if str2 is one edit away from str1 by replacing a
+     * character in str1.
+     * @param str1 The string from which str2 might be derivable from
+     * (one edit away) by replacing a character.
+     * @param str2 The string one edit away from str1, by replacing a character.
+     * @return Returns true iff str2 is one edit away from str1 by replacing
+     * one character.
      */
-    public static boolean OneEditReplace(String s1, String s2) {
+    public static boolean OneEditReplace(String str1, String str2) {
         boolean foundDifference = false;
-        for (int i = 0; i < s1.length(); ++i) {
-            if (s1.charAt(i) != s2.charAt(i)) {
+        for (int i = 0; i < str1.length(); ++i) {
+            if (str1.charAt(i) != str2.charAt(i)) {
                 if (foundDifference) {
                     return false;
                 }
@@ -53,63 +62,66 @@ public class OneAway {
         return true;
     }
 
-    /** Used to check if you can insert/remove a character into/from
-     *  s1 to make s2.
-     *  @param s1 The string that a character will be inserted into
-     *            or removed from.
-     *  @param s2 The new string formed after the character has been
-     *            inserted or removed from.
-     *  @return Returns true, if s2 is a string derived after the
-     *          insertion/removal operation.
+    /**.
+     * Used to check if you can insert/remove a character into/from
+     * strings.
+     * @param str1 The string that a character will be inserted into
+     * or removed from.
+     * @param str2 The new string formed after the character has been
+     * inserted into or removed from.
+     * @return Returns true, if s2 is a string derived after the
+     * insertion/removal operation.
+     * Please see README.md for runtime analysis
      */
-    public static boolean oneEditInsertRemove(String s1, String s2) {
-        int index1 = 0;
-        int index2 = 0;
-        while (index2 < s2.length() && index1 < s1.length()) {
-            if (s1.charAt(index1) != s2.charAt(index2)) {
-                if (index1 != index2) {
+    public static boolean oneEditInsertRemove(String str1, String str2) {
+        int idx1 = 0;
+        int idx2 = 0;
+        while (idx2 < str2.length() && idx1 < str1.length()) {
+            if (str1.charAt(idx1) != str2.charAt(idx2)) {
+                if (idx1 != idx2) {
                     return false;
                 }
-                index2++;
+                idx2++;
             } else {
-                index1++;
-                index2++;
+                idx1++;
+                idx2++;
             }
         }
         return true;
     }
 
 
-    /**
-     * Solution 2.
+    /**. Solution 2.
+     * This method is used to check for replacement, insertion and
+     * deletion, please see README.md for details of algorithm.
      *
      */
-    public static boolean oneEditAway(String first, String second) {
+    public static boolean oneEditAway(String str1, String str2) {
         /* length checks. */
-        if (Math.abs(first.length() - second.length()) > 1) {
+        if (Math.abs(str1.length() - str2.length()) > 1) {
             return false;
         }
 
         /* get shorter and longer string */
-        String s1 = first.length() < second.length() ? first : second;
-        String s2 = first.length() < second.length() ? second : first;
+        String s1 = str1.length() < str2.length() ? str1 : str2;
+        String s2 = str1.length() < str2.length() ? str2 : str1;
 
-        int index1 = 0;
-        int index2 = 0;
+        int idx1 = 0;
+        int idx2 = 0;
         boolean foundDifference = false;
-        while (index2 < s2.length() && index1 < s1.length()) {
-            if (s1.charAt(index1) != s2.charAt(index2)) {
+        while (idx2 < str2.length() && idx1 < str1.length()) {
+            if (str1.charAt(idx1) != str2.charAt(idx2)) {
                 /* ensure that this is the first difference found */
-                if (foundDifference) return false
+                if (foundDifference) return false;
                 foundDifference = true;
                 // on replace, move shorter pointer
-                if (s1.length() == s2.length()) {
-                    index++;
+                if (str1.length() == str2.length()) {
+                    idx2++;
                 }
             } else {
-                index1++;   // if matching,  move shorter pointer
+                idx1++;   // if matching,  move shorter pointer
             }
-            index2++;       // always move pointer for longer string
+            idx2++;       // always move pointer for longer string
         }
         return true;
     }
