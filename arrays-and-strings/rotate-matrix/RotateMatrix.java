@@ -1,11 +1,46 @@
-/**
- * Please see RotateMatrixREADME.md for details about this class.
- * @author oi August 30, 2018.
+/**.
+ * File: RotateMatrix.java
+ * -----------------------
+ * This program is used to rotate a matrix by 90 degrees.
+ * Please see README.md for details of algorithm.
+ * ------------------------------------------
+ * | Compilation: javac RotateMatrix.java   |
+ * | Execution:   java RotateMatrix         |
+ * ------------------------------------------
  */
+import java.util.*;
+
 public class RotateMatrix {
 
-    static boolean rotate(int[][] matrix) {
+    public static void main(String[] args) {
+        int[][] matrix1 = randomMatrix(3,3,0,9);
+        printMatrix(matrix1);
+        System.out.print("\n");
+        rotate(matrix1);
+        System.out.print("\n");
+        printMatrix(matrix1);
+        System.out.print("\n");
+
+        int[][] matrix2 = randomMatrix(4,4,0,9);
+        printMatrix(matrix2);
+        System.out.print("\n");
+        rotate(matrix2);
+        System.out.print("\n");
+        printMatrix(matrix2);
+        System.out.print("\n");
+    }
+
+    /**.
+     * This method rotates a 2-dimensianal N*N matrix by 90 degrees. 
+     * @pre matrix is an N*N.
+     * @post Rotates parsed matrix by 90 degrees.
+     * @param matrix Is the 2D matrix to be rotated by 90 degrees
+     * @return Returns true iff matrix was rotated by 90 degrees.
+     */
+    private static boolean rotate(int[][] matrix) {
+        /* checks that matrix is a 2D matrix */
         if (matrix.length == 0 || matrix.length != matrix[0].length) return false;
+        
         int n = matrix.length;
         for (int layer = 0; layer < n / 2; ++layer) {
             int first = layer;
@@ -28,5 +63,42 @@ public class RotateMatrix {
             }
         }
         return true;
+    }
+
+    /**. Prints the matrix to console */
+    private static void printMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; ++i) {
+            for (int j = 0; j < matrix[i].length; ++j) {
+                if (matrix[i][j] < 10 && matrix[i][j] > -10) {
+                    System.out.print(" ");
+                }
+                if (matrix[i][j] < 100 && matrix[i][j] > -100) {
+                    System.out.print(" ");
+                }
+                if (matrix[i][j] >= 0) {
+                    System.out.print(" ");
+                }
+                System.out.print(" " + matrix[i][j]);
+            }
+            System.out.print("\n");
+        }
+    }
+    
+    private static int[][] randomMatrix(int M, int N, int min, int max) {
+        int[][] matrix = new int[M][N];
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
+                matrix[i][j] = randomIntInRange(min, max);
+            }
+        }
+        return matrix;
+    }
+
+    private static int randomInt(int n) {
+        return (int) (Math.random() * n);
+    }
+
+    private static int randomIntInRange(int min, int max) {
+        return randomInt(max + 1 - min) + min;
     }
 }
