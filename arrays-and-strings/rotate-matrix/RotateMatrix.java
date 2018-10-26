@@ -13,7 +13,7 @@ import java.util.*;
 public class RotateMatrix {
 
     public static void main(String[] args) {
-        int[][] matrix1 = randomMatrix(3,3,0,9);
+        int[][] matrix1 = randomMatrix(5,5,0,9);
         printMatrix(matrix1);
         System.out.print("\n");
         rotate(matrix1);
@@ -31,14 +31,13 @@ public class RotateMatrix {
     }
 
     /**.
-     * This method rotates a 2-dimensianal N*N matrix by 90 degrees. 
+     * This method rotates an N*N matrix by 90 degrees. 
      * @pre matrix is an N*N.
      * @post Rotates parsed matrix by 90 degrees.
      * @param matrix Is the 2D matrix to be rotated by 90 degrees
      * @return Returns true iff matrix was rotated by 90 degrees.
      */
     private static boolean rotate(int[][] matrix) {
-        /* checks that matrix is a 2D matrix */
         if (matrix.length == 0 || matrix.length != matrix[0].length) return false;
         
         int n = matrix.length;
