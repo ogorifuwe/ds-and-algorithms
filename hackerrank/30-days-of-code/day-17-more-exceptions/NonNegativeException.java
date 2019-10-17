@@ -1,0 +1,3 @@
+class NonNegativeException extends Exception {
+  
+}
