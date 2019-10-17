@@ -1,10 +1,4 @@
-This repo is mostly a reflection of my journey with 
-data structures and algorithms especially in preparation
-for technical interviews, but most importantly gaining a
-thorough understanding of their underlying concepts.
+For the days when I have downtime or just feel doing nothing else but solving problems and having fun.
 
-Please note that, solutions are not originally mine.
 
-Study Materials include but are not limited to;
-* Cracking the Coding Interview by Gayle Laakmann Mcdowell
-* Java Structures by Duane A. Bailey
+The more complex a problem, the greater the joy when you finally solve it - F.N Nwudu
