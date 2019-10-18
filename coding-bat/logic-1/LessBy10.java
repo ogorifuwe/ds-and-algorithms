@@ -15,11 +15,6 @@ public class LessBy10 {
     int high = Math.max(a, b);
     high = Math.max(high, c);
 
-    /*System.out.println(high - a);
-    System.out.println(high - b);
-    System.out.println(high - c);
-    */
-
     if (high - a >= 10 || high - b >= 10 || high - c >= 10) {
       return true;
     }
