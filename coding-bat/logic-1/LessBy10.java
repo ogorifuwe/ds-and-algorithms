@@ -10,8 +10,13 @@
  **/
 public class LessBy10 {
 
+  public static boolean lessBy10(int a, int b, int c) {
+     if (Math.abs(a-b) >= 10 || Math.abs(a-c) >= 10 || Math.abs(b-c) >= 10) return true;
+     return false;
+  }
+
   public static boolean lessBy10i(int a, int b, int c) {
-    
+
     int high = Math.max(a, b);
     high = Math.max(high, c);
 
@@ -23,7 +28,7 @@ public class LessBy10 {
   }
 
   public static boolean lessBy10ii(int a, int b, int c) {
-    
+
     int diff1 = Math.abs(a - b);
     int diff2 = Math.abs(a - c);
     int diff3 = Math.abs(b - c);
