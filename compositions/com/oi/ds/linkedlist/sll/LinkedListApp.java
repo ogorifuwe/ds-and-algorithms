@@ -7,13 +7,18 @@ public class LinkedListApp {
 
   public static void main(String[] args) {
     
-    List<String> names = new LinkedList<>();
+    List<Person> people = new LinkedList<>();
 
-    names.insert("John");
-    names.insert("Mary");
-    names.insert("Peter");
+    Person p1 = new Person(12, "John");
+    Person p2 = new Person(25, "Mary");
+    Person p3 = new Person(37, "Peter");
 
-    names.traverse();
-    System.out.println();
+    people.insert(p1);
+    people.insert(p2);
+    people.insert(p3);
+    people.remove(p3);
+    
+    people.traverse();
+    System.out.println(people.size());
   }
 }

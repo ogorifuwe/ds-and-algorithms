@@ -13,7 +13,7 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
     if (root == null) {
       root = new Node<>(data);
     } else {
-        insertBeginning(data);
+        insertEnd(data, root);
     }
     ++numOfItems;
   }
@@ -60,9 +60,9 @@ public class LinkedList<T extends Comparable<T>> implements List<T> {
 
   // utility for inserting a node at tail of list in O(N) time
   private void insertEnd(T data, Node<T> node) {
-    
+
     if (node.getNextNode() != null) {
-      insertEnd(data, node);
+      insertEnd(data, node.getNextNode());
     } else {
         Node<T> newNode = new Node<>(data);
         node.setNextNode(newNode);
