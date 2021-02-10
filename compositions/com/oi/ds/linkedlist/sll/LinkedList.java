@@ -5,8 +5,8 @@ import com.oi.ds.linkedlist.sll.Node;
 
 public class LinkedList<T extends Comparable<T>> implements List<T> {
   
-  private Node<T> root; // this is the head node
-  private int numOfItems; // size of the linkedlist
+  public Node<T> root; // this is the head node
+  public int numOfItems; // size of the linkedlist
 
   @Override
   public void insert(T data) {
