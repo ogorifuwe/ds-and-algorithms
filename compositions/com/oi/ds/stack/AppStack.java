@@ -31,5 +31,13 @@ public class AppStack {
 
     Integer newTop = numbers.peek();
     System.out.println(newTop);
+
+    String expr = "( ( 1 + 2 ) * ( 2 + 1 ) )";
+    DijkstraInterpreter dijkstraInterpreter =
+      new DijkstraInterpreter();
+
+    dijkstraInterpreter.interpretExpression(expr);
+    dijkstraInterpreter.displayResult();
+
   }
 }
