@@ -2,14 +2,14 @@ package com.oi.ds.bst;
 
 public class Node<T> {
 
-  private T element;
-  private Node<T> leftChild;
-  private Node<T> rightChild;
-  private Node<T> parentNode;
+  public T element;
+  public Node<T> leftChild;
+  public Node<T> rightChild;
+  public Node<T> parent;
 
-  public Node(T element, Node<T> parentNode) {
+  public Node(T element, Node<T> parent) {
     this.element = element;
-    this.parentNode = parentNode;
+    this.parent = parent;
   }
 
   @Override
