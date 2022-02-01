@@ -22,7 +22,7 @@ class RemoveNthNodeFromEndOfList {
       finger = finger.next;
     }
 
-    currentNode.next = currentNode.next.next;
+    finger.next = finger.next.next;
     return head;
   }
 
