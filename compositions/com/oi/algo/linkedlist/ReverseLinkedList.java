@@ -5,6 +5,10 @@
 
 class ReverseLinkedList {
   
+  /**
+   * Time Complexity: O(N)
+   * Space Complexity: O(1)
+   */
   public Node reverse(Node head) {
     Node previousNode = null;
     Node currentNode = head;
@@ -13,7 +17,7 @@ class ReverseLinkedList {
       Node buffer  = currentNode.next;
       currentNode.next = previousNode;
       previousNode = currentNode;
-      currentNode = buffer ;
+      currentNode = buffer;
     }
 
     return head;
