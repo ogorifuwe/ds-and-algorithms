@@ -1,6 +1,6 @@
 package com.oi.ds.linkedlist.dll;
 
-public class Node<T extends Comparable<T>> {
+public class Node<T> {
 
   private T data;
   private Node<T> previousNode;

@@ -2,7 +2,8 @@ package com.oi.ds.linkedlist.dll;
 
 import com.oi.ds.linkedlist.dll.List;
 
-public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
+public class DoublyLinkedList<T extends Comparable<T>>
+  implements List<T> {
 
   private Node<T> head;
   private Node<T> tail;
@@ -45,16 +46,16 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
 
   @Override
   public T get(int index) {
-    if (index < 0 || index >= capacity) return -1;
+    if (index < 0 || index >= capacity) return null;
 
     Node finger = head;
-    if (index + 1 < capacity - index)
-      for (int i = 0; i < index + 1; ++i) finger = finger.setNextNode();
+    if (index < capacity - index) 
+      for (int i = 0; i < index; ++i) finger = finger.getNextNode();
     else {
       finger = tail;
-      for (int i = 0; i < capacity - index; ++i) finger = finger.setPreviousNode();
+      for (int i = 0; i < capacity - index - 1; ++i) finger = finger.getPreviousNode();
     }
-    return finger.getData();
+    return (T)(finger.getData());
   }
 
   @Override
