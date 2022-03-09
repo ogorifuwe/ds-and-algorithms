@@ -44,6 +44,20 @@ public class DoublyLinkedList<T extends Comparable<T>> implements List<T> {
   }
 
   @Override
+  public T get(int index) {
+    if (index < 0 || index >= capacity) return -1;
+
+    Node finger = head;
+    if (index + 1 < capacity - index)
+      for (int i = 0; i < index + 1; ++i) finger = finger.setNextNode();
+    else {
+      finger = tail;
+      for (int i = 0; i < capacity - index; ++i) finger = finger.setPreviousNode();
+    }
+    return finger.getData();
+  }
+
+  @Override
   public void remove(T data) {
    
     Node<T> currNode = head;
